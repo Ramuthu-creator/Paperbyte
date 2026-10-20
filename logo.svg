@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" fill="none" width="260" height="64" role="img" aria-label="Paperbyte Official Logo">
+  <defs>
+    <!-- Gradients for Document & Digital Bytes -->
+    <linearGradient id="logoDocGrad" x1="14" y1="10" x2="48" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4338ca"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="logoFoldGrad" x1="14" y1="10" x2="30" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="logoByteViolet" x1="40" y1="12" x2="62" y2="34" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="logoByteTeal" x1="38" y1="28" x2="64" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2dd4bf"/>
+      <stop offset="100%" stop-color="#0d9488"/>
+    </linearGradient>
+    <filter id="logoGlow" x="0" y="0" width="76" height="64" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#4338ca" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- ICON EMBLEM -->
+  <g filter="url(#logoGlow)">
+    <!-- Base Document with Folded Ear -->
+    <path d="M14 22L28 8H48V42L36 54H14V22Z" fill="url(#logoDocGrad)"/>
+    <!-- Folded Paper Ear -->
+    <path d="M14 22L28 8V22H14Z" fill="url(#logoFoldGrad)"/>
+    <!-- Subtle document line accent -->
+    <line x1="22" y1="32" x2="36" y2="32" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="22" y1="40" x2="32" y2="40" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Digital "Byte" Pixel Cascade -->
+    <rect x="42" y="12" width="7" height="7" rx="1.5" fill="url(#logoByteViolet)"/>
+    <rect x="52" y="16" width="6" height="6" rx="1.5" fill="#c084fc"/>
+    <rect x="44" y="23" width="9" height="9" rx="2" fill="url(#logoByteTeal)"/>
+    <rect x="56" y="26" width="7" height="7" rx="1.5" fill="#2dd4bf"/>
+    <rect x="42" y="35" width="8" height="8" rx="2" fill="url(#logoByteViolet)"/>
+    <rect x="53" y="37" width="8" height="8" rx="2" fill="url(#logoByteTeal)"/>
+    <rect x="63" y="32" width="5" height="5" rx="1" fill="#38bdf8"/>
+    <rect x="48" y="46" width="6" height="6" rx="1.5" fill="#818cf8"/>
+  </g>
+
+  <!-- LOGO TYPOGRAPHY -->
+  <text x="76" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="26" font-weight="800" fill="currentColor" letter-spacing="-0.6">
+    Paper<tspan fill="#4338ca">byte</tspan>
+  </text>
+  <text x="77" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#64748b" letter-spacing="1.2">
+    SMART TECH &amp; ESSENTIALS
+  </text>
+</svg>
