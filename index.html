@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-contrast="normal" data-font-size="normal">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Paperbyte - Modern Accessible E-Commerce Platform engineered following Universal Design standards with 3 product categories, full stock tracking, and mock checkout." />
+  <title>Paperbyte &bull; Accessible E-Commerce</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  
+  <!-- Single-Directory CSS Link -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Screen Reader Live Status Announcer (Universal Design Principle 4) -->
+  <div id="a11yLiveAnnouncer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Keyboard Skip Link for Motor & Screen Reader Accessibility -->
+  <a href="#mainContent" class="skip-link">Skip to Main Content</a>
+
+  <!-- ======================================================================
+       1. PRIMARY SITE HEADER & BRAND
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container header-main">
+      <div class="brand-wrapper">
+        <a href="#mainContent" class="brand-link" onclick="setCategory('all')" aria-label="Paperbyte Home">
+          <div class="brand-logo-icon" aria-hidden="true">
+            <svg viewBox="0 0 54 54" fill="none" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="hdrDocGrad" x1="6" y1="6" x2="36" y2="46" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#4338ca"/>
+                  <stop offset="100%" stop-color="#1e1b4b"/>
+                </linearGradient>
+                <linearGradient id="hdrFoldGrad" x1="6" y1="6" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#818cf8"/>
+                  <stop offset="100%" stop-color="#4f46e5"/>
+                </linearGradient>
+                <linearGradient id="hdrByteTeal" x1="28" y1="18" x2="50" y2="42" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#2dd4bf"/>
+                  <stop offset="100%" stop-color="#0d9488"/>
+                </linearGradient>
+              </defs>
+              <!-- Folded Document Base -->
+              <path d="M8 18L20 6H38V34L26 46H8V18Z" fill="url(#hdrDocGrad)"/>
+              <path d="M8 18L20 6V18H8Z" fill="url(#hdrFoldGrad)"/>
+              <!-- Digital Pixel Byte Cascade -->
+              <rect x="34" y="8" width="6" height="6" rx="1.5" fill="#a855f7"/>
+              <rect x="36" y="18" width="8" height="8" rx="2" fill="url(#hdrByteTeal)"/>
+              <rect x="46" y="21" width="6" height="6" rx="1.5" fill="#2dd4bf"/>
+              <rect x="33" y="29" width="7" height="7" rx="1.5" fill="#6366f1"/>
+              <rect x="43" y="31" width="7" height="7" rx="1.5" fill="#38bdf8"/>
+            </svg>
+          </div>
+          <div>
+            <div class="brand-name">Paper<span>byte</span></div>
+            <div class="brand-sub">Smart Tech & Modern Essentials</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Real-Time Accessible Search Form -->
+      <form class="search-form" role="search" onsubmit="event.preventDefault();">
+        <label for="searchInput" class="sr-only">Search products</label>
+        <div class="search-input-wrapper">
+          <span class="search-icon-left" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input 
+            type="search" 
+            id="searchInput" 
+            class="search-input" 
+            placeholder="Search all 10 products... (Press '/' to focus)" 
+            autocomplete="off" />
+          <button type="button" id="searchClear" class="search-clear-btn" aria-label="Clear search input">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- Action Buttons: Accessibility, Orders History & Shopping Basket -->
+      <div class="header-actions">
+        <button class="action-btn btn-a11y-header" onclick="toggleA11yPanel()" title="Accessibility & Display Settings (Hot-key: A)" aria-label="Accessibility settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="4" r="2"></circle>
+            <path d="M18 9h-7l-2 5l4 1v6h-3v-5l-2.5-1.5L6 19"></path>
+          </svg>
+          <span>Accessibility</span>
+        </button>
+
+        <button class="action-btn btn-orders" onclick="openOrdersHistoryModal()" title="View Mock Order Receipts">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span>Orders</span>
+        </button>
+
+        <button class="action-btn btn-cart" onclick="openCartDrawer()" aria-label="Open Shopping Basket" title="View Shopping Basket (Hot-key: C)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span>Basket</span>
+          <span id="cartBadge" class="cart-count-badge">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         3. CATEGORY NAVIGATION (EXACTLY 3 CATEGORIES AS REQUIRED)
+         ==================================================================== -->
+    <nav class="categories-nav" aria-label="Product Categories">
+      <div class="container">
+        <ul class="categories-list" role="tablist">
+          <li role="presentation">
+            <button 
+              class="category-tab-btn active" 
+              role="tab" 
+              aria-selected="true" 
+              data-category="all" 
+              onclick="setCategory('all')">
+              <span>All Products</span>
+              <span class="category-badge-count" data-category-count="all">10</span>
+            </button>
+          </li>
+          
+          <!-- Category 1: Electronics -->
+          <li role="presentation">
+            <button 
+              class="category-tab-btn" 
+              role="tab" 
+              aria-selected="false" 
+              data-category="electronics" 
+              onclick="setCategory('electronics')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span>Electronics</span>
+              <span class="category-badge-count" data-category-count="electronics">4</span>
+            </button>
+          </li>
+
+          <!-- Category 2: Clothing -->
+          <li role="presentation">
+            <button 
+              class="category-tab-btn" 
+              role="tab" 
+              aria-selected="false" 
+              data-category="clothing" 
+              onclick="setCategory('clothing')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path>
+              </svg>
+              <span>Clothing</span>
+              <span class="category-badge-count" data-category-count="clothing">3</span>
+            </button>
+          </li>
+
+          <!-- Category 3: Stationery -->
+          <li role="presentation">
+            <button 
+              class="category-tab-btn" 
+              role="tab" 
+              aria-selected="false" 
+              data-category="stationery" 
+              onclick="setCategory('stationery')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                <path d="M2 2l7.586 7.586"></path>
+                <circle cx="11" cy="11" r="2"></circle>
+              </svg>
+              <span>Stationery</span>
+              <span class="category-badge-count" data-category-count="stationery">3</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ======================================================================
+       4. HERO BANNER
+       ====================================================================== -->
+  <section class="hero-banner" aria-labelledby="heroTitle">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-tagline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Official Paperbyte Store &bull; Quality & Sustainable Design
+        </div>
+        <h1 class="hero-title" id="heroTitle">
+          Modern Essentials Crafted for Everyone
+        </h1>
+        <p class="hero-description">
+          Explore our premium selection across <strong>Electronics</strong>, <strong>Clothing</strong>, and <strong>Stationery</strong>. Built with universal accessibility, instant bag management, and seamless checkout.
+        </p>
+
+        <div class="hero-quick-features">
+          <span class="feature-pill">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--status-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Free Delivery Over Rs. 15,000
+          </span>
+          <span class="feature-pill">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--status-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Live Inventory Sync
+          </span>
+          <span class="feature-pill">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--status-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Text-to-Speech Assist
+          </span>
+          <span class="feature-pill">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--status-success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Instant Secure Checkout
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-card-summary">
+        <div class="hero-card-header">
+          <span class="hero-card-title">Curated Collection</span>
+          <span class="a11y-badge">Premium Quality</span>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-num">10</div>
+            <div class="stat-label">Handpicked Items</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Key Categories</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       5. MAIN STOREFRONT CATALOG SECTION
+       ====================================================================== -->
+  <main id="mainContent" class="catalog-section">
+    <div class="container">
+      
+      <!-- Storefront Filter and Sorting Toolbar -->
+      <section class="filter-bar" aria-label="Catalog Filtering & Sorting Options">
+        <div class="filter-group-left">
+          <span id="resultsCount" class="results-count" aria-live="polite">Showing 10 of 10 products</span>
+        </div>
+
+        <div class="filter-group-right">
+          <!-- In-Stock Filter Checkbox -->
+          <label class="checkbox-label" for="inStockOnly">
+            <input type="checkbox" id="inStockOnly" />
+            <span>In-Stock Only</span>
+          </label>
+
+          <!-- Sort Select -->
+          <div class="filter-label">
+            <label for="sortSelect">Sort:</label>
+            <select id="sortSelect" class="custom-select">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Customer Rating</option>
+              <option value="name-asc">Product Name (A-Z)</option>
+            </select>
+          </div>
+
+          <!-- View Toggle (Grid / List) -->
+          <div class="view-toggle-btns" role="group" aria-label="Product display layout">
+            <button id="btnGridView" class="view-btn active" title="Grid Layout" aria-label="Grid view">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </button>
+            <button id="btnListView" class="view-btn" title="List Layout" aria-label="List view">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products Grid (Dynamically Rendered by script.js) -->
+      <section id="productsGrid" class="products-grid" aria-label="Products Catalog">
+        <!-- Rendered via JavaScript -->
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ======================================================================
+       6. SHOPPING BASKET DRAWER (LOCALSTORAGE POWERED)
+       ====================================================================== -->
+  <div id="drawerBackdrop" class="drawer-backdrop" onclick="closeCartDrawer()" aria-hidden="true"></div>
+
+  <aside id="cartDrawer" class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartDrawerTitle" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <h2 id="cartDrawerTitle" class="drawer-title">Shopping Basket</h2>
+      </div>
+      <button id="btnCloseCart" class="btn-close-drawer" onclick="closeCartDrawer()" aria-label="Close Shopping Basket">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Scrollable Items Container -->
+    <div id="cartItemsList" class="cart-items-list" aria-live="polite">
+      <!-- Injected by script.js -->
+    </div>
+
+    <!-- Order Summary & Checkout Trigger -->
+    <div class="drawer-footer">
+      <div class="order-breakdown">
+        <div class="breakdown-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">Rs. 0.00</span>
+        </div>
+        <div class="breakdown-row">
+          <span>Delivery</span>
+          <span id="cartShipping">FREE</span>
+        </div>
+        <div class="breakdown-row">
+          <span>Estimated Taxes (2.5%)</span>
+          <span id="cartTax">Rs. 0.00</span>
+        </div>
+        <div class="breakdown-row total-row">
+          <span>Order Total</span>
+          <span id="cartTotal">Rs. 0.00</span>
+        </div>
+      </div>
+
+      <div class="cart-actions">
+        <button id="btnProceedCheckout" class="btn-checkout" onclick="openCheckoutModal()">
+          <span>Proceed to Mock Checkout</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <button class="btn-clear-cart" onclick="clearEntireCart()">Clear All Items</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ======================================================================
+       7. PRODUCT QUICK-VIEW MODAL & SPEECH SYNTHESIZER
+       ====================================================================== -->
+  <div id="quickViewModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalQuickViewTitle" aria-hidden="true">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <h3 id="modalQuickViewTitle" class="modal-title">Product Details</h3>
+        </div>
+        <button id="btnCloseQuickView" class="btn-close-modal" onclick="closeQuickView()" aria-label="Close product details">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div id="quickViewContent" class="modal-body">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       8. 3-STEP MOCK CHECKOUT & PAYMENT MODAL
+       ====================================================================== -->
+  <div id="checkoutModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="checkoutModalTitle" aria-hidden="true">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="checkoutModalTitle" class="modal-title">Mock Checkout Process</h2>
+        <button class="btn-close-modal" onclick="closeCheckoutModal()" aria-label="Close checkout modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Step Progress Indicator (Principle 3: Simple and Intuitive Use) -->
+        <div class="checkout-steps-tracker" aria-label="Checkout Progress">
+          <div class="step-indicator active" data-step="1">
+            <div class="step-bubble">1</div>
+            <span class="step-label">Shipping</span>
+          </div>
+          <div class="step-indicator" data-step="2">
+            <div class="step-bubble">2</div>
+            <span class="step-label">Payment</span>
+          </div>
+          <div class="step-indicator" data-step="3">
+            <div class="step-bubble">3</div>
+            <span class="step-label">Review</span>
+          </div>
+        </div>
+
+        <div id="checkoutStepContainer">
+          <!-- Injected dynamically based on step 1, 2, or 3 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       9. ORDERS HISTORY MODAL (LOCALSTORAGE DEMONSTRATION)
+       ====================================================================== -->
+  <div id="ordersModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="ordersModalTitle" aria-hidden="true">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="ordersModalTitle" class="modal-title">Mock Purchase History</h2>
+        <button class="btn-close-modal" onclick="closeOrdersHistoryModal()" aria-label="Close orders modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div id="ordersListContent" class="modal-body">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       10. KEYBOARD SHORTCUTS REFERENCE MODAL
+       ====================================================================== -->
+  <div id="shortcutsModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="shortcutsModalTitle" aria-hidden="true">
+    <div class="modal-container" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3 id="shortcutsModalTitle" class="modal-title">Keyboard Navigation</h3>
+        <button class="btn-close-modal" onclick="closeShortcutsModal()" aria-label="Close shortcuts modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
+          Navigate Paperbyte without a mouse using these universal shortcuts:
+        </p>
+        <div class="shortcuts-grid">
+          <div class="shortcut-row">
+            <span>Focus Product Search</span>
+            <kbd>/</kbd>
+          </div>
+          <div class="shortcut-row">
+            <span>Open Shopping Basket</span>
+            <kbd>C</kbd>
+          </div>
+          <div class="shortcut-row">
+            <span>Show All Products</span>
+            <kbd>H</kbd>
+          </div>
+          <div class="shortcut-row">
+            <span>Toggle Dark/Light Mode</span>
+            <kbd>T</kbd>
+          </div>
+          <div class="shortcut-row">
+            <span>Toggle High Contrast</span>
+            <kbd>K</kbd>
+          </div>
+          <div class="shortcut-row">
+            <span>Close Modal / Drawer</span>
+            <kbd>Esc</kbd>
+          </div>
+          <div class="shortcut-row">
+            <span>View this Shortcuts Help</span>
+            <kbd>?</kbd>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       11. TOAST NOTIFICATION CONTAINER (ERROR TOLERANCE & UNDO)
+       ====================================================================== -->
+  <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ======================================================================
+       12. FOOTER
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <div class="brand-logo-icon" style="width: 36px; height: 36px;" aria-hidden="true">
+              <svg viewBox="0 0 54 54" fill="none" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 18L20 6H38V34L26 46H8V18Z" fill="#4338ca"/>
+                <path d="M8 18L20 6V18H8Z" fill="#818cf8"/>
+                <rect x="34" y="8" width="6" height="6" rx="1.5" fill="#a855f7"/>
+                <rect x="36" y="18" width="8" height="8" rx="2" fill="#2dd4bf"/>
+                <rect x="43" y="31" width="7" height="7" rx="1.5" fill="#38bdf8"/>
+              </svg>
+            </div>
+            <div class="brand-name">Paper<span>byte</span></div>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; max-width: 300px;">
+            Modern, accessible e-commerce platform dedicated to universal design, seamless shopping, and sustainable everyday essentials.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Product Categories</h4>
+          <ul class="footer-links">
+            <li><button onclick="setCategory('electronics')">Electronics (4 Items)</button></li>
+            <li><button onclick="setCategory('clothing')">Clothing (3 Items)</button></li>
+            <li><button onclick="setCategory('stationery')">Stationery (3 Items)</button></li>
+            <li><button onclick="setCategory('all')">Show All 10 Products</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Accessibility & Tools</h4>
+          <ul class="footer-links">
+            <li><button onclick="toggleHighContrast()">Toggle High Contrast (WCAG AAA)</button></li>
+            <li><button onclick="toggleTheme()">Toggle Dark / Light Mode</button></li>
+            <li><button onclick="openShortcutsModal()">Keyboard Shortcuts Guide</button></li>
+            <li><button onclick="openOrdersHistoryModal()">View Stored Orders History</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Store Settings & Data</h4>
+          <ul class="footer-links">
+            <li><button onclick="resetEntireStoreData()" style="color: var(--status-danger); font-weight: 600;">Reset Demo Data & Stock</button></li>
+            <li><span style="font-size: 0.85rem; color: var(--text-tertiary);">Zero Dependencies &bull; Pure Web</span></li>
+            <li><span style="font-size: 0.85rem; color: var(--text-tertiary);">Local Storage Synchronized</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Paperbyte Storefront. All rights reserved.</div>
+        <div>Engineered following Universal Design Principles 1 through 7.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       FLOATING ACCESSIBILITY WIDGET (USERWAY / ASSISTIVE HUB STYLE)
+       ====================================================================== -->
+  <div class="a11y-fab-wrapper">
+    <button 
+      id="btnA11yFab" 
+      class="a11y-fab" 
+      onclick="toggleA11yPanel()" 
+      aria-expanded="false" 
+      aria-controls="a11yFlyoutPanel" 
+      aria-label="Open Accessibility & Display Settings"
+      title="Accessibility Preferences (Press 'A')">
+      <svg class="a11y-fab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="4" r="2"></circle>
+        <path d="M18 9h-7l-2 5l4 1v6h-3v-5l-2.5-1.5L6 19"></path>
+      </svg>
+      <span class="a11y-fab-label">Accessibility</span>
+    </button>
+  </div>
+
+  <!-- Accessibility Flyout Panel Backdrop -->
+  <div id="a11yBackdrop" class="a11y-backdrop" onclick="closeA11yPanel()" aria-hidden="true"></div>
+
+  <!-- Accessibility Flyout Panel -->
+  <aside id="a11yFlyoutPanel" class="a11y-panel" role="dialog" aria-modal="true" aria-labelledby="a11yPanelTitle" aria-hidden="true">
+    <div class="a11y-panel-header">
+      <div class="a11y-panel-title-group">
+        <div class="a11y-icon-badge" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="4" r="2"></circle>
+            <path d="M18 9h-7l-2 5l4 1v6h-3v-5l-2.5-1.5L6 19"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 id="a11yPanelTitle" class="a11y-panel-title">Accessibility & Display</h3>
+          <p class="a11y-panel-sub">Universal Design Preferences</p>
+        </div>
+      </div>
+      <button class="btn-close-panel" onclick="closeA11yPanel()" aria-label="Close accessibility panel">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="a11y-panel-body">
+      <!-- Section 1: Font Size Scaling -->
+      <div class="a11y-setting-card">
+        <div class="setting-card-header">
+          <span class="setting-title">Text Size (Equitable Use)</span>
+          <span id="currentFontSizeLabel" class="setting-value-badge">Standard (100%)</span>
+        </div>
+        <p class="setting-desc">Adjust the scale of typography across the store.</p>
+        <div class="a11y-btn-grid three-col">
+          <button class="a11y-toggle-btn active" data-size="normal" onclick="setFontSize('normal')">
+            <span style="font-size: 0.9rem;">Default</span>
+            <small>100%</small>
+          </button>
+          <button class="a11y-toggle-btn" data-size="large" onclick="setFontSize('large')">
+            <span style="font-size: 1.1rem; font-weight: 700;">Large</span>
+            <small>125%</small>
+          </button>
+          <button class="a11y-toggle-btn" data-size="extra-large" onclick="setFontSize('extra-large')">
+            <span style="font-size: 1.25rem; font-weight: 800;">X-Large</span>
+            <small>150%</small>
+          </button>
+        </div>
+      </div>
+
+      <!-- Section 2: Contrast Mode -->
+      <div class="a11y-setting-card">
+        <div class="setting-card-header">
+          <span class="setting-title">Visual Contrast (WCAG AAA)</span>
+          <span id="currentContrastLabel" class="setting-value-badge">Standard</span>
+        </div>
+        <p class="setting-desc">High-contrast palette designed for maximum visual clarity.</p>
+        <div class="a11y-btn-grid two-col">
+          <button id="btnContrastNormal" class="a11y-toggle-btn active" onclick="setHighContrast(false)">
+            <span>Standard</span>
+          </button>
+          <button id="btnContrastHigh" class="a11y-toggle-btn" onclick="setHighContrast(true)">
+            <span>High Contrast</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Section 3: Color Theme -->
+      <div class="a11y-setting-card">
+        <div class="setting-card-header">
+          <span class="setting-title">Color Scheme</span>
+          <span id="currentThemeLabel" class="setting-value-badge">Light Mode</span>
+        </div>
+        <p class="setting-desc">Select between crisp light mode and comfortable dark mode.</p>
+        <div class="a11y-btn-grid two-col">
+          <button id="btnThemeLight" class="a11y-toggle-btn active" onclick="setTheme('light')">
+            <span>Light Mode</span>
+          </button>
+          <button id="btnThemeDark" class="a11y-toggle-btn" onclick="setTheme('dark')">
+            <span>Dark Mode</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Section 4: Text-To-Speech Demo -->
+      <div class="a11y-setting-card">
+        <div class="setting-card-header">
+          <span class="setting-title">Audio Assistance</span>
+          <span class="setting-value-badge">Web Speech API</span>
+        </div>
+        <p class="setting-desc">Click below to test the browser's spoken voice assistant.</p>
+        <button class="btn-speech-test" onclick="speakText('Welcome to Paperbyte. Discover our 10 products across Electronics, Clothing, and Stationery.')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <span>Test Voice Description</span>
+        </button>
+      </div>
+
+      <!-- Section 5: Keyboard Shortcuts Reference -->
+      <div class="a11y-setting-card">
+        <div class="setting-card-header">
+          <span class="setting-title">Keyboard Shortcuts</span>
+          <kbd>?</kbd>
+        </div>
+        <p class="setting-desc">Press keys on your keyboard for rapid navigation:</p>
+        <div class="mini-shortcuts-list">
+          <div class="mini-shortcut-item"><span>Search products:</span> <kbd>/</kbd></div>
+          <div class="mini-shortcut-item"><span>Toggle Accessibility:</span> <kbd>A</kbd></div>
+          <div class="mini-shortcut-item"><span>Open Basket:</span> <kbd>C</kbd></div>
+          <div class="mini-shortcut-item"><span>Toggle Theme:</span> <kbd>T</kbd></div>
+          <div class="mini-shortcut-item"><span>Toggle High Contrast:</span> <kbd>K</kbd></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="a11y-panel-footer">
+      <button class="btn-reset-a11y" onclick="resetAccessibilityPreferences()">Reset to Standard Defaults</button>
+    </div>
+  </aside>
+
+  <!-- Single-Directory JavaScript Link -->
+  <script src="script.js"></script>
+</body>
+</html>
